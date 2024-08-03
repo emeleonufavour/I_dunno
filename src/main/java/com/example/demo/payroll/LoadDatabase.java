@@ -14,35 +14,35 @@ class LoadDatabase {
     CommandLineRunner initDatabase(EmployeeRepository repository) {
         return args -> {
             // Create employees
-            Employee bilbo = new Employee("Emele-Onu Favour", "Mobile dev");
-            Employee frodo = new Employee("Fagbola Peter", "Cybersecurity analyst");
-            Employee gandalf = new Employee("Abolarin Tobi", "Web dev");
-            Employee aragorn = new Employee("Adejola James", "Designer");
-            Employee legolas = new Employee("Ibidamitan Busayo", "Web dev");
+            Employee favour = new Employee("Emele-Onu Favour", "Mobile dev");
+            Employee pogba = new Employee("Fagbola Peter", "Cybersecurity analyst");
+            Employee abots = new Employee("Abolarin Tobi", "Web dev");
+            Employee james = new Employee("Adejola James", "Designer");
+            Employee busayo = new Employee("Ibidamitan Busayo", "Web dev");
 
             // Save employees to the repository
-            repository.save(bilbo);
-            repository.save(frodo);
-            repository.save(gandalf);
-            repository.save(aragorn);
-            repository.save(legolas);
+            repository.save(favour);
+            repository.save(pogba);
+            repository.save(abots);
+            repository.save(james);
+            repository.save(busayo);
 
             // Set boss relationships
-            frodo.setBoss(bilbo);
-            aragorn.setBoss(gandalf);
-            legolas.setBoss(aragorn);
+            pogba.setBoss(favour);
+            james.setBoss(abots);
+            busayo.setBoss(james);
 
             // Save updated employees to establish boss relationships
-            repository.save(frodo);
-            repository.save(aragorn);
-            repository.save(legolas);
+            repository.save(pogba);
+            repository.save(james);
+            repository.save(busayo);
 
             // Log the saved employees
-            log.info("Preloading " + bilbo);
-            log.info("Preloading " + frodo);
-            log.info("Preloading " + gandalf);
-            log.info("Preloading " + aragorn);
-            log.info("Preloading " + legolas);
+            log.info("Preloading " + favour);
+            log.info("Preloading " + pogba);
+            log.info("Preloading " + abots);
+            log.info("Preloading " + james);
+            log.info("Preloading " + busayo);
         };
     }
 }
