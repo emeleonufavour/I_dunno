@@ -13,31 +13,26 @@ class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(EmployeeRepository repository) {
         return args -> {
-            // Create employees
             Employee favour = new Employee("Emele-Onu Favour", "Mobile dev");
             Employee pogba = new Employee("Fagbola Peter", "Cybersecurity analyst");
             Employee abots = new Employee("Abolarin Tobi", "Web dev");
             Employee james = new Employee("Adejola James", "Designer");
             Employee busayo = new Employee("Ibidamitan Busayo", "Web dev");
 
-            // Save employees to the repository
             repository.save(favour);
             repository.save(pogba);
             repository.save(abots);
             repository.save(james);
             repository.save(busayo);
 
-            // Set boss relationships
             pogba.setBoss(favour);
             james.setBoss(abots);
             busayo.setBoss(james);
 
-            // Save updated employees to establish boss relationships
             repository.save(pogba);
             repository.save(james);
             repository.save(busayo);
 
-            // Log the saved employees
             log.info("Preloading " + favour);
             log.info("Preloading " + pogba);
             log.info("Preloading " + abots);
